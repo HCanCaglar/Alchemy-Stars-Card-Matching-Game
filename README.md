@@ -1,0 +1,1 @@
+This Project aims to create a simple card/name matching game using react&redux
