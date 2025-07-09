@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCards, flipCards, checkMatch } from "../features/game/gameSlice";
-
+import GameOverMessage from "./GameOverMessage";
 const CardDisplay = () => {
   const dispatch = useDispatch();
   const cards = useSelector((state) => state.cards.cardArray);
   const flippedPairsId = useSelector((state) => state.cards.flippedPairsId);
-
+  const gameOverMessage = useSelector((state) => state.cards.gameOverMessage);
+  const showGameOverMessage = useSelector(
+    (state) => state.cards.showGameOverMessage
+  );
   useEffect(() => {
     const cardNames = [
       "Navigator",
@@ -70,6 +73,7 @@ const CardDisplay = () => {
 
   return (
     <div>
+      {showGameOverMessage && <GameOverMessage message={gameOverMessage} />}
       <ul className="cards-grid">
         {cards.map((card) => (
           <div

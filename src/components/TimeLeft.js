@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  setCards,
-  flipCards,
-  checkMatch,
   decrementTimer,
   setGameStatus,
+  setGameOverMessage,
+  setShowGameOverMessage,
 } from "../features/game/gameSlice";
 import { useNavigate } from "react-router-dom";
+import { updateLeaderboard } from "../utils/leaderboardUtils";
+import {
+  setNewHighestScoreAchieved,
+  setHighestScore,
+} from "../features/users/userSlice";
 
 const TimeLeft = () => {
   const dispatch = useDispatch();
@@ -15,18 +19,25 @@ const TimeLeft = () => {
   const timer = useSelector((state) => state.cards.timer);
   const matchedPairCount = useSelector((state) => state.cards.matchedPairCount);
   const gameStatus = useSelector((state) => state.cards.gameStatus);
-
+  const playerName = useSelector((state) => state.users.userName);
   useEffect(() => {
     let timerId;
 
     if (matchedPairCount === 8 && gameStatus === "onGoing") {
       dispatch(setGameStatus("won"));
-      navigate("/win");
+      const didAchieveNewHighScore = updateLeaderboard(playerName, timer);
+      dispatch(setNewHighestScoreAchieved(didAchieveNewHighScore));
+      if (didAchieveNewHighScore) {
+        dispatch(setHighestScore({ highestScore: timer }));
+      }
+      navigate("/won");
     } else if (gameStatus === "onGoing" && timer === 0) {
+      dispatch(setGameOverMessage("Time's up!"));
+      dispatch(setShowGameOverMessage(true));
       timerId = setTimeout(() => {
         dispatch(setGameStatus("lost"));
-        navigate("/lose");
-      }, 100);
+        navigate("/lost");
+      }, 1500);
     } else if (gameStatus === "onGoing" && timer > 0) {
       timerId = setTimeout(() => {
         dispatch(decrementTimer());

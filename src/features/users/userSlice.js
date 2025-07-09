@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { userName: "", highestScore: 0, loggedIn: false };
+const initialState = {
+  userName: "",
+  highestScore: 0,
+  loggedIn: false,
+  newHighestScoreAchieved: false,
+};
 
 const userSlice = createSlice({
   name: "user",
@@ -15,9 +20,17 @@ const userSlice = createSlice({
     setLoggedIn(state, action) {
       state.loggedIn = action.payload.loggedIn;
     },
+    setNewHighestScoreAchieved: (state, action) => {
+      state.newHighestScoreAchieved = action.payload;
+    },
   },
 });
 
-export const { setUserName, setHighestScore,setLoggedIn } = userSlice.actions;
+export const {
+  setUserName,
+  setHighestScore,
+  setLoggedIn,
+  setNewHighestScoreAchieved,
+} = userSlice.actions;
 
 export default userSlice.reducer;

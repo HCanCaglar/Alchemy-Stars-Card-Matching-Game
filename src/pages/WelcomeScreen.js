@@ -13,6 +13,7 @@ const WelcomeScreen = () => {
 
   const [inputUserName, setInputUserName] = useState("");
   const [showErrorMessage, setShowErrorMessage] = useState(false);
+  
   const getUserScoreIfExists = (nameToCheck) => {
     const existingLeaderboard = localStorage.getItem(
       "cardMatchingGameLeaderboard"

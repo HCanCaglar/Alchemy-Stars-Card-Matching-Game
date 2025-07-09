@@ -5,6 +5,8 @@ const initialState = {
   matchedPairCount: 0,
   gameStatus: "onGoing",
   flippedPairsId: [],
+  gameOverMessage: "",
+  showGameOverMessage: false,
 };
 const gameSlice = createSlice({
   name: "cards",
@@ -63,6 +65,19 @@ const gameSlice = createSlice({
     setGameStatus: (state, action) => {
       state.gameStatus = action.payload;
     },
+    resetGame: () => {
+      return initialState;
+    },
+    setGameOverMessage: (state, action) => {
+      state.gameOverMessage = action.payload;
+    },
+    setShowGameOverMessage: (state, action) => {
+      state.showGameOverMessage = action.payload;
+    },
+    clearGameOverMessage: (state, action) => {
+      state.showGameOverMessage = false;
+      state.gameOverMessage = "";
+    },
   },
 });
 
@@ -72,5 +87,9 @@ export const {
   checkMatch,
   decrementTimer,
   setGameStatus,
+  resetGame,
+  setGameOverMessage,
+  setShowGameOverMessage,
+  clearGameOverMessage,
 } = gameSlice.actions;
 export default gameSlice.reducer;
