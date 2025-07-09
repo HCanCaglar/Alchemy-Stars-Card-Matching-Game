@@ -10,9 +10,10 @@ const CardDisplay = () => {
   const showGameOverMessage = useSelector(
     (state) => state.cards.showGameOverMessage
   );
+  const navigatorName = useSelector((state) => state.users.userName);
   useEffect(() => {
     const cardNames = [
-      "Navigator",
+      navigatorName || "Navigator",
       "Vice",
       "Carleen",
       "Goldie",

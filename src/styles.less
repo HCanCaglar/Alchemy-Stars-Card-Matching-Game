@@ -10,11 +10,21 @@ html {
   font-size: 2rem;
   border-spacing: 30px;
   text-align: center;
+  table-layout: auto; /* don't restrict widths */
+  width: 100%;
 }
 .leader-table-head {
   text-decoration: underline;
 }
-.game-over-div {
+td,
+th {
+  white-space: normal; /* allow line breaks */
+  word-wrap: break-word; /* break long words */
+  word-break: break-word; /* force break if needed */
+  max-width: 200px; /* optional, controls how soon it wraps */
+}
+
+.game-over-message-div {
   position: fixed;
   top: 0;
   left: 0;
@@ -63,6 +73,7 @@ html {
   max-width: 800px;
   margin: 30px auto;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
 }
 .welcome-screen {
   display: flex;
@@ -198,10 +209,10 @@ html {
 
 /* When the parent .card has .card-flipped, rotate the inner container */
 .card-flipped .card-inner {
-  transform: rotateY(180deg); /* This is the actual flip */
+  transform: rotateY(180deg); /* This is the flip */
 }
 
-/* When the card is matched, it should disappear regardless of flip state */
+/* When the card is matched, it should disappear */
 .card-matched {
   visibility: hidden;
   opacity: 0;

@@ -1,7 +1,7 @@
 import React from "react";
 const GameOverMessage = ({ message }) => {
   return (
-    <div className="game-over-div">
+    <div className="game-over-message-div">
       <div className="game-over-message">{message}</div>
     </div>
   );
