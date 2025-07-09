@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cardArray: [],
-  timer: 2,
+  timer: 60,
   matchedPairCount: 0,
   gameStatus: "onGoing",
   flippedPairsId: [],
