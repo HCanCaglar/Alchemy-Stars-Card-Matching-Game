@@ -13,7 +13,7 @@ const WelcomeScreen = () => {
 
   const [inputUserName, setInputUserName] = useState("");
   const [showErrorMessage, setShowErrorMessage] = useState(false);
-  
+
   const getUserScoreIfExists = (nameToCheck) => {
     const existingLeaderboard = localStorage.getItem(
       "cardMatchingGameLeaderboard"
@@ -31,6 +31,9 @@ const WelcomeScreen = () => {
 
   const onNameChange = (e) => {
     setInputUserName(e.target.value);
+    if (e.target.value.trim() !== "") {
+      setShowErrorMessage(false);
+    }
   };
   const onSubmitName = (e) => {
     e.preventDefault();
@@ -55,12 +58,25 @@ const WelcomeScreen = () => {
   };
 
   return (
-    <div>
-      <h1>Welcome to Alchemy Stars Card Matching Game!</h1>
+    <div className="welcome-screen">
+      <h1 className="welcome-title">
+        Welcome to Alchemy Stars Card Matching Game!
+      </h1>
       <form onSubmit={onSubmitName}>
-        <label>User name</label>
-        <input value={inputUserName} type="text" onChange={onNameChange} />
-        <button type="submit">Start the Game!</button>
+        <div className="welcome-form">
+          <label className="welcome-label">Navigator's name:</label>
+
+          <input
+            value={inputUserName}
+            type="text"
+            onChange={onNameChange}
+            className="welcome-input"
+          />
+        </div>
+        <button type="submit" className="button">
+          Start the Game!
+        </button>
+
         {showErrorMessage && <span>please enter your username</span>}
       </form>
     </div>

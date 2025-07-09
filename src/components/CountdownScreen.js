@@ -27,11 +27,7 @@ const CountdownScreen = () => {
     }
   }, [displayCountdown, navigate]);
 
-  return (
-    <div style={{ fontSize: "48px", textAlign: "center" }}>
-      {displayCountdown}
-    </div>
-  );
+  return <div className="countdown">{displayCountdown}</div>;
 };
 
 export default CountdownScreen;

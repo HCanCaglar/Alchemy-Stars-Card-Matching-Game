@@ -1,9 +1,8 @@
-// GameOverMessage.jsx
 import React from "react";
 const GameOverMessage = ({ message }) => {
   return (
-    <div style={{ ...overlayStyle, border: "5px solid red" }}>
-      <div style={{ ...messageStyle, backgroundColor: "lime" }}>{message}</div>
+    <div className="game-over-div">
+      <div className="game-over-message">{message}</div>
     </div>
   );
 };

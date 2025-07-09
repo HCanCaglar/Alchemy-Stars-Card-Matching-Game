@@ -25,10 +25,18 @@ const LeaderBoard = () => {
 
   return (
     <div>
-      <h2>LeaderBoard</h2>
-      <table>
+      <h2
+        style={{
+          textAlign: "center",
+          fontSize: "2rem",
+          textDecoration: "underline",
+        }}
+      >
+        LeaderBoard
+      </h2>
+      <table className="leaderboard-table">
         <thead>
-          <tr>
+          <tr className="leader-table-head">
             <th>Rank</th>
             <th>Player</th>
             <th>Score</th>

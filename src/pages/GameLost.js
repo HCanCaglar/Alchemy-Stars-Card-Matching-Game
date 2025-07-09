@@ -24,10 +24,22 @@ const GameWon = () => {
     navigate("/");
   };
   return (
-    <div>
+    <div className="game-over">
       <h1>You have Lost!</h1>
-      <button onClick={handleRestart}>Try again?</button>
-      <button onClick={handleExit}>Quit the game</button>
+      <button
+        className="button"
+        onClick={handleRestart}
+        style={{ margin: "15px" }}
+      >
+        Try again?
+      </button>
+      <button
+        className="button"
+        onClick={handleExit}
+        style={{ margin: "15px" }}
+      >
+        Quit the game
+      </button>
       <LeaderBoard />
     </div>
   );

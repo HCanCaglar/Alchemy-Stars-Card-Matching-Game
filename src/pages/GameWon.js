@@ -20,10 +20,22 @@ const GameWon = () => {
     navigate("/");
   };
   return (
-    <div>
+    <div className="game-over ">
       <h1>You have won!</h1>
-      <button onClick={handleRestart}>Wanna play again?</button>
-      <button onClick={handleExit}>Quit the game</button>
+      <button
+        className="button"
+        onClick={handleRestart}
+        style={{ margin: "15px" }}
+      >
+        Wanna play again?
+      </button>
+      <button
+        className="button"
+        onClick={handleExit}
+        style={{ margin: "15px" }}
+      >
+        Quit the game
+      </button>
       <LeaderBoard />
     </div>
   );

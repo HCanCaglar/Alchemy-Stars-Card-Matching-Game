@@ -49,9 +49,9 @@ const TimeLeft = () => {
         clearTimeout(timerId);
       }
     };
-  }, [gameStatus, timer, matchedPairCount, dispatch, navigate]);
+  }, [gameStatus, timer, playerName, matchedPairCount, dispatch, navigate]);
 
-  return <div>Time Left: {timer}</div>;
+  return <div className="time-left">Time Left: {timer}</div>;
 };
 
 export default TimeLeft;
