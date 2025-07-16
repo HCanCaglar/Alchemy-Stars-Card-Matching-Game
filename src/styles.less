@@ -289,6 +289,7 @@ th {
 .card-front {
   background-color: #15c0d6; /* Face-down card color */
   color: #e2e8f0; /* Text color for face-down cards */
+
   /* No initial transform */
 }
 
@@ -297,6 +298,9 @@ th {
   background-color: #b0eff7; /* Face-up card color */
   color: #2d3748; /* Dark text for face-up cards */
   transform: rotateY(180deg); /* Initially rotated to be the back face */
+  white-space: normal;
+  word-wrap: break-word; /* legacy property, but good for support */
+  word-break: break-word; /* modern, better name for the same thing */
 }
 
 /* When the parent .card has .card-flipped, rotate the inner container */
