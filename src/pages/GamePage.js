@@ -1,7 +1,6 @@
 import React from "react";
 import CardDisplay from "../components/CardDisplay";
 import TimeLeft from "../components/TimeLeft";
-import PlaylistPlayer from "../components/PlaylistPlayer";
 
 const GamePage = () => {
   return (
@@ -10,7 +9,6 @@ const GamePage = () => {
 
       <div className="time-video">
         <TimeLeft />
-        <PlaylistPlayer />
       </div>
     </div>
   );
