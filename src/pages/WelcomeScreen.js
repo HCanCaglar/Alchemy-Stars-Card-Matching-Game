@@ -77,7 +77,9 @@ const WelcomeScreen = () => {
           Start the Game!
         </button>
 
-        {showErrorMessage && <span>please enter your username</span>}
+        {showErrorMessage && (
+          <span className="error-message">please enter your username</span>
+        )}
       </form>
     </div>
   );

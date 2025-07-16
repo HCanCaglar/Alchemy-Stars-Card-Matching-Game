@@ -24,7 +24,7 @@ const LeaderBoard = () => {
   }, []);
 
   return (
-    <div>
+    <div className="leaderboard-container">
       <h2
         style={{
           textAlign: "center",
@@ -34,29 +34,34 @@ const LeaderBoard = () => {
       >
         LeaderBoard
       </h2>
-      <table className="leaderboard-table">
-        <thead>
-          <tr className="leader-table-head">
-            <th>Rank</th>
-            <th>Player</th>
-            <th>Score</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {leaderboardData.map((entry, index) => (
-            <tr key={entry.userName}>
-              <td>{index + 1}</td>
-              <td>{entry.userName}</td>
-              <td>{entry.highestScore}</td>
-              <td>
-                {entry.userName === playerName &&
-                  newHighScoreAchievedForCurrentPlayer && <span> (NEW!)</span>}
-              </td>
+      <div className="leaderboard-wrapper">
+        {" "}
+        <table className="leaderboard-table">
+          <thead>
+            <tr className="leader-table-head">
+              <th>Rank</th>
+              <th>Player</th>
+              <th>Score</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {leaderboardData.map((entry, index) => (
+              <tr key={entry.userName}>
+                <td>{index + 1}</td>
+                <td>{entry.userName}</td>
+                <td>{entry.highestScore}</td>
+                <td>
+                  {entry.userName === playerName &&
+                    newHighScoreAchievedForCurrentPlayer && (
+                      <span> (NEW!)</span>
+                    )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

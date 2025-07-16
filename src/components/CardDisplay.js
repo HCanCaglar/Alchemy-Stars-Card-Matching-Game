@@ -73,7 +73,7 @@ const CardDisplay = () => {
   };
 
   return (
-    <div>
+    <div className="cards-div">
       {showGameOverMessage && <GameOverMessage message={gameOverMessage} />}
       <ul className="cards-grid">
         {cards.map((card) => (

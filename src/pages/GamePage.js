@@ -1,17 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import CardDisplay from "../components/CardDisplay";
 import TimeLeft from "../components/TimeLeft";
-const GamePage = () => {
-  useEffect(() => {
-    setTimeout(() => {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-    }, 100);
-  }, []);
+import PlaylistPlayer from "../components/PlaylistPlayer";
 
+const GamePage = () => {
   return (
     <div className="game-page">
       <CardDisplay />
-      <TimeLeft />
+
+      <div className="time-video">
+        <TimeLeft />
+        <PlaylistPlayer />
+      </div>
     </div>
   );
 };

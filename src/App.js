@@ -8,13 +8,11 @@ import CountdownScreen from "./components/CountdownScreen";
 import GameLost from "./pages/GameLost";
 import GameWon from "./pages/GameWon";
 import "./styles.less";
-import PlaylistPlayer from "./components/PlaylistPlayer";
 
 function App() {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <PlaylistPlayer />
         <Routes>
           <Route path="/" exact element={<WelcomeScreen />} />
           <Route path="/countdown" element={<CountdownScreen />} />
