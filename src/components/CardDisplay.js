@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCards, flipCards, checkMatch } from "../features/game/gameSlice";
+import {
+  setCards,
+  flipCards,
+  checkMatch,
+  setIsPreviewing,
+} from "../features/game/gameSlice";
 import GameOverMessage from "./GameOverMessage";
 const CardDisplay = () => {
   const dispatch = useDispatch();
@@ -11,7 +16,19 @@ const CardDisplay = () => {
     (state) => state.cards.showGameOverMessage
   );
   const navigatorName = useSelector((state) => state.users.userName);
+  const hasInitialized = useRef(false);
+
   useEffect(() => {
+    console.log("🔥 useEffect triggered");
+
+    if (hasInitialized.current) {
+      console.log("🚫 Already initialized, skipping");
+      return;
+    }
+
+    hasInitialized.current = true;
+    console.log("✅ First time initialization");
+
     const cardNames = [
       navigatorName || "Navigator",
       "Vice",
@@ -22,30 +39,27 @@ const CardDisplay = () => {
       "Gram",
       "Jeno",
     ];
+
     let count = 0;
     let cardArray = [];
     cardNames.forEach((name) => {
-      let mathingCard1 = {
+      cardArray.push({
         pairName: name,
         isFlipped: false,
         isMatched: false,
-        id: count,
-      };
-      cardArray.push(mathingCard1);
-      count = count + 1;
-      let mathingCard2 = {
+        id: count++,
+      });
+      cardArray.push({
         pairName: name,
         isFlipped: false,
         isMatched: false,
-        id: count,
-      };
-      cardArray.push(mathingCard2);
-      count = count + 1;
+        id: count++,
+      });
     });
 
     const shuffleArray = (arr) => {
       const randArr = [...arr];
-      for (var i = randArr.length - 1; i >= 0; i--) {
+      for (let i = randArr.length - 1; i >= 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [randArr[i], randArr[j]] = [randArr[j], randArr[i]];
       }
@@ -53,7 +67,26 @@ const CardDisplay = () => {
     };
 
     const shuffledArray = shuffleArray(cardArray);
-    dispatch(setCards(shuffledArray));
+
+    console.log("🔄 Dispatching setIsPreviewing(true)");
+    dispatch(setIsPreviewing(true));
+
+    const previewArray = shuffledArray.map((card) => ({
+      ...card,
+      isFlipped: true,
+    }));
+    dispatch(setCards(previewArray));
+
+    setTimeout(() => {
+      const readyArray = previewArray.map((card) => ({
+        ...card,
+        isFlipped: false,
+      }));
+      dispatch(setCards(readyArray));
+
+      console.log("✅ Dispatching setIsPreviewing(false)");
+      dispatch(setIsPreviewing(false));
+    }, 1000);
   }, []);
 
   useEffect(() => {

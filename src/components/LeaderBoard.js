@@ -54,7 +54,7 @@ const LeaderBoard = () => {
                 <td>
                   {entry.userName === playerName &&
                     newHighScoreAchievedForCurrentPlayer && (
-                      <span> (NEW!)</span>
+                      <span style={{ color: "green" }}> (NEW!)</span>
                     )}
                 </td>
               </tr>

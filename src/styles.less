@@ -1,18 +1,18 @@
 html {
   background-image: url("../public/start-up.jpg");
-  background-size: cover; //Scales the image to cover the entire container, cropping if necessary
+  background-size: cover;
 
-  background-repeat: no-repeat; //Prevents tiling
+  background-repeat: no-repeat;
   background-position: center;
-  min-height: 100vh; //Makes sure the container takes at least full viewport height
+  min-height: 100vh;
 }
 .leaderboard-container {
-  /* This is now the flex item. It will shrink reliably. */
   width: 100%;
   min-width: 0;
+  max-height: 30vh;
+  overflow-y: auto;
 }
 
-/* The rest of the CSS stays the same. The wrapper and table properties are correct */
 .leaderboard-wrapper {
   padding: 0;
   width: 100%;
@@ -24,11 +24,7 @@ html {
 
   white-space: nowrap;
   width: auto;
-  font-size: clamp(
-    1rem,
-    2vw,
-    2rem
-  ); /* Scales between 1rem and 2rem based on viewport width */
+  font-size: clamp(1rem, 2vw, 2rem);
   border-spacing: 0;
   border-collapse: collapse;
   text-align: center;
@@ -41,9 +37,9 @@ td,
 th {
   padding: 0 1vw;
   white-space: nowrap;
-  max-width: 20%; /* optional, controls how soon it wraps */
-  word-wrap: normal; /* This is also correct */
-  word-break: normal; /* Correct */
+  max-width: 20%;
+  word-wrap: normal;
+  word-break: normal;
 }
 
 .game-over-message-div {
@@ -75,16 +71,16 @@ th {
   color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   display: flex;
-  justify-content: center; /* horizontal text center */
-  align-items: center; /* vertical text center */
-  height: 30vh; /* box height = 30% of screen height */
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
   min-width: 250px;
   max-width: 400px;
-  width: 30vw; /* responsive width = 80% of screen width */
-  margin: auto; /* center div on screen */
-  font-size: clamp(2rem, 5vw, 6rem); /* min: 2rem, ideal: 5vw, max: 6rem */
+  width: 30vw;
+  margin: auto;
+  font-size: clamp(2rem, 5vw, 6rem);
   border-radius: 12px;
-  text-align: center; /* ensure text wraps nicely */
+  text-align: center;
   box-sizing: border-box;
   font-size: 6rem;
   overflow-wrap: break-word;
@@ -93,6 +89,13 @@ th {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media (max-width: 992px) {
+  .countdown-video .youtube-player {
+    height: 40vh;
+    width: 100%;
+    margin-top: 3rem;
+  }
 }
 .game-over {
   display: flex;
@@ -118,6 +121,7 @@ th {
   max-width: 90%;
   margin: 2rem auto;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  min-height: 35vh;
   .welcome-label {
     font-size: clamp(1.2rem, 3vw, 2rem);
   }
@@ -129,7 +133,7 @@ th {
     display: flex;
     justify-content: center;
     gap: 1vw;
-    margin-bottom: 2vw; /* Use vw for margins too */
+    margin-bottom: 2vw;
   }
   .error-message {
     font-size: 1.2rem;
@@ -138,6 +142,7 @@ th {
 .button {
   display: block;
   margin: 0 auto;
+  margin-top: 1rem;
   border: 1px solid black !important;
   border-radius: 10px !important;
   transform: scale(1.6);
@@ -160,14 +165,12 @@ th {
 }
 
 @media (max-width: 992px) {
-  /* Adjust this breakpoint as needed */
-
   .game-page {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto; /* Stacks the content vertically */
+    grid-template-rows: auto auto;
     gap: 1rem;
     padding: 0.5rem;
-    height: auto; /* Allow the page to adjust height based on content */
+    height: auto;
   }
 }
 
@@ -175,9 +178,9 @@ th {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  width: 100%; /* full width of grid cell */
-  max-width: 90vw; /* optional max size */
-  aspect-ratio: 1 / 1; /* always a square grid */
+  width: 100%;
+  max-width: 90vw;
+  aspect-ratio: 1 / 1;
   box-sizing: border-box;
   padding: 1rem;
 }
@@ -192,11 +195,7 @@ th {
   min-width: 200px;
   text-align: center;
   padding: 2vh 1vw;
-  font-size: clamp(
-    1.5rem,
-    4vw,
-    2.5rem
-  ); /* Use a clamp to scale the font size */
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   gap: 50px;
   max-width: 90%;
 }
@@ -207,37 +206,24 @@ th {
   padding: 10px;
 }
 
-@media (max-width: 900px) {
-  .youtube-player {
-    max-width: 90%; /* Adjusts the max width for mobile */
-    margin: 0 auto;
-  }
-}
 .time-video {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%; /* Make height relative to parent */
-  padding: 1rem; /* Use a smaller, flexible padding */
+  height: 100%;
+  padding: 1rem;
   box-sizing: border-box;
   max-width: 100%;
   justify-content: center;
-  gap: 2vw; /* Or a flexible gap like 2vw */
-}
-
-/* Also, add this for the breakpoint transition */
-@media (max-width: 900px) {
-  .time-video {
-    height: auto; /* Allow it to collapse when stacking */
-  }
+  gap: 2vw;
 }
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns, equal width */
-  gap: 10px; /* Space between cards */
-  width: 100%; /* Or a fixed width */
-  margin: 0 auto; /* Center the grid */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  margin: 0 auto;
   width: 100%;
   height: 100%;
   gap: 1.5%;
@@ -246,8 +232,8 @@ th {
   padding-left: 0;
 }
 .card {
-  width: 100%; /* Take full width of its grid cell */
-  color: #e2e8f0; /* Text color for face-down cards */
+  width: 100%;
+  color: #e2e8f0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,7 +248,6 @@ th {
   transform-style: preserve-3d; /* Allows children to be positioned in 3D space */
   perspective: 1000px; /* Defines the 3D viewing perspective */
 }
-/* Inner container for the flip */
 .card-inner {
   position: absolute;
   top: 0;
@@ -290,20 +275,16 @@ th {
 
 /* Front face (face down) */
 .card-front {
-  background-color: #15c0d6; /* Face-down card color */
-  color: #e2e8f0; /* Text color for face-down cards */
-
-  /* No initial transform */
+  background-color: #15c0d6;
+  color: #e2e8f0;
 }
 
 /* Back face (face up) */
 .card-back {
-  background-color: #b0eff7; /* Face-up card color */
-  color: #2d3748; /* Dark text for face-up cards */
+  background-color: #b0eff7;
+  color: #2d3748;
   transform: rotateY(180deg); /* Initially rotated to be the back face */
   white-space: normal;
-  word-wrap: break-word; /* legacy property, but good for support */
-  word-break: break-word; /* modern, better name for the same thing */
 }
 
 /* When the parent .card has .card-flipped, rotate the inner container */
@@ -323,9 +304,15 @@ th {
   align-items: center;
 }
 @media (max-width: 992px) {
-  /* Adjust this breakpoint as needed */
   .game-video {
     flex-direction: column;
+    .youtube-player {
+      height: 40vh;
+      width: 100%;
+    }
+    .game-page {
+      width: 100%;
+    }
   }
 }
 
@@ -334,19 +321,30 @@ th {
   flex-direction: column;
   align-items: center;
   .youtube-player {
-    width: 20vw;
-    height: 20vh;
+    height: 40vh;
+    width: 100%;
   }
 }
 
 @media (max-width: 992px) {
-  .youtube-player {
-    min-width: 70vw;
-    min-height: 70vh;
+  .welcome-video .youtube-player {
+    width: 100%;
+    height: 40vh;
   }
 }
 
 .over-video {
   display: flex;
   justify-content: space-around;
+}
+
+@media (max-width: 992px) {
+  .over-video {
+    flex-direction: column;
+    align-items: center;
+  }
+  .over-video .youtube-player {
+    width: 100%;
+    height: 40vh;
+  }
 }

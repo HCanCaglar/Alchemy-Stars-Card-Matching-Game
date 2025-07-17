@@ -20,7 +20,10 @@ const TimeLeft = () => {
   const matchedPairCount = useSelector((state) => state.cards.matchedPairCount);
   const gameStatus = useSelector((state) => state.cards.gameStatus);
   const playerName = useSelector((state) => state.users.userName);
+  const isPreviewing = useSelector((state) => state.cards.isPreviewing);
+
   useEffect(() => {
+    if (isPreviewing) return;
     let timerId;
 
     if (matchedPairCount === 8 && gameStatus === "onGoing") {
@@ -49,7 +52,15 @@ const TimeLeft = () => {
         clearTimeout(timerId);
       }
     };
-  }, [gameStatus, timer, playerName, matchedPairCount, dispatch, navigate]);
+  }, [
+    gameStatus,
+    timer,
+    playerName,
+    matchedPairCount,
+    dispatch,
+    navigate,
+    isPreviewing,
+  ]);
 
   return <div className="time-left">Time Left: {timer}</div>;
 };

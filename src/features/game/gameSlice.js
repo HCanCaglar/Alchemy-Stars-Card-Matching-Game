@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cardArray: [],
-  timer: 633330,
+  timer: 60,
   matchedPairCount: 0,
   gameStatus: "onGoing",
   flippedPairsId: [],
   gameOverMessage: "",
   showGameOverMessage: false,
+  isPreviewing: true,
 };
 const gameSlice = createSlice({
   name: "cards",
@@ -78,6 +79,9 @@ const gameSlice = createSlice({
       state.showGameOverMessage = false;
       state.gameOverMessage = "";
     },
+    setIsPreviewing: (state, action) => {
+      state.isPreviewing = action.payload;
+    },
   },
 });
 
@@ -91,5 +95,6 @@ export const {
   setGameOverMessage,
   setShowGameOverMessage,
   clearGameOverMessage,
+  setIsPreviewing,
 } = gameSlice.actions;
 export default gameSlice.reducer;
