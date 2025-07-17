@@ -93,7 +93,7 @@ const CardDisplay = () => {
     if (flippedPairsId.length == 2) {
       const timer = setTimeout(() => {
         dispatch(checkMatch());
-      }, 800);
+      }, 600);
       return () => clearTimeout(timer);
     }
   }, [flippedPairsId, dispatch]);

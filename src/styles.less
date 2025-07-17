@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   background-image: url("../public/start-up.jpg");
   background-size: cover;
@@ -74,10 +80,7 @@ th {
   justify-content: center;
   align-items: center;
   height: 30vh;
-  min-width: 250px;
-  max-width: 400px;
-  width: 30vw;
-  margin: auto;
+  width: 50vw;
   font-size: clamp(2rem, 5vw, 6rem);
   border-radius: 12px;
   text-align: center;
@@ -86,17 +89,25 @@ th {
   overflow-wrap: break-word;
 }
 .countdown-video {
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  .youtube-player {
+    width: 30vw;
+    height: 40vh;
+  }
 }
-@media (max-width: 992px) {
+@media (max-width: 576px) {
   .countdown-video .youtube-player {
     height: 40vh;
     width: 100%;
     margin-top: 3rem;
   }
 }
+
 .game-over {
   display: flex;
   align-items: center;
@@ -106,7 +117,6 @@ th {
   border-radius: 10px;
   padding: 1rem;
   color: white;
-  max-width: 60%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 .welcome-screen {
@@ -118,10 +128,10 @@ th {
   border-radius: 10px;
   padding: 1rem;
   color: white;
-  max-width: 90%;
-  margin: 2rem auto;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  min-height: 35vh;
+  height: 28vh;
+  width: 50vw;
+  height: 30vh;
   .welcome-label {
     font-size: clamp(1.2rem, 3vw, 2rem);
   }
@@ -134,6 +144,7 @@ th {
     justify-content: center;
     gap: 1vw;
     margin-bottom: 2vw;
+    padding: 1rem;
   }
   .error-message {
     font-size: 1.2rem;
@@ -146,7 +157,7 @@ th {
   border: 1px solid black !important;
   border-radius: 10px !important;
   transform: scale(1.6);
-  margin-bottom: 20px;
+  padding: 0.2rem;
   background-color: #1c91a1;
 }
 .button:hover {
@@ -158,13 +169,13 @@ th {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   align-items: center;
-  width: 70vw;
+  width: 100vw;
   height: 100vh;
   box-sizing: border-box;
   padding: clamp(0.5rem, 2vw, 3rem);
 }
 
-@media (max-width: 992px) {
+@media (max-width: 576px) {
   .game-page {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
@@ -189,21 +200,14 @@ th {
   border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 10px;
   color: white;
-  max-width: 800px;
+  max-width: 40vw;
   box-shadow: 0 0 15px rgba(138, 67, 67, 0.3);
-  max-height: 100px;
-  min-width: 200px;
+  max-height: 10vh;
+  min-width: 20vw;
   text-align: center;
   padding: 2vh 1vw;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(1rem, 4vw, 2.5rem);
   gap: 50px;
-  max-width: 90%;
-}
-.youtube-player {
-  width: 30vw;
-  height: 30vw;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  padding: 10px;
 }
 
 .time-video {
@@ -298,53 +302,273 @@ th {
   opacity: 0;
   transition: opacity 0.5s ease, visibility 0s 0.5s;
 }
+.over-video {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  .youtube-player {
+    width: 30vw;
+    height: 40vh;
+  }
+}
 
 .game-video {
   display: flex;
+  flex-direction: column;
   align-items: center;
-}
-@media (max-width: 992px) {
-  .game-video {
-    flex-direction: column;
-    .youtube-player {
-      height: 40vh;
-      width: 100%;
+  .game-page {
+    .cards-div {
+      width: 40vw;
     }
-    .game-page {
-      width: 100%;
-    }
+  }
+  .youtube-player {
+    width: 30vw;
+    height: 40vh;
   }
 }
 
 .welcome-video {
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  .youtube-player {
-    height: 40vh;
-    width: 100%;
-  }
-}
-
-@media (max-width: 992px) {
-  .welcome-video .youtube-player {
-    width: 100%;
-    height: 40vh;
-  }
-}
-
-.over-video {
-  display: flex;
   justify-content: space-around;
+  .youtube-player {
+    width: 30vw;
+    height: 40vh;
+  }
 }
 
-@media (max-width: 992px) {
-  .over-video {
-    flex-direction: column;
+@media (max-width: 1200px) {
+  .welcome-screen {
+    width: 60vw;
+    min-height: 40vh;
+  }
+  .welcome-video .youtube-player {
+    width: 40vw;
+    height: 40vh;
+  }
+
+  .countdown {
+    width: 60vw;
+    height: 40vh;
+  }
+  .countdown-video .youtube-player {
+    width: 40vw;
+    height: 40vh;
+  }
+  .button {
+    padding: 0.2rem;
+  }
+  .game-page {
+    width: 90vw;
+    display: flex;
     align-items: center;
+    justify-content: space-around;
+  }
+  .game-video .youtube-player {
+    width: 40vw;
+    height: 40vh;
+  }
+  .over-video {
+    height: 100vh;
   }
   .over-video .youtube-player {
-    width: 100%;
+    width: 40vw;
     height: 40vh;
+  }
+
+  .time-left {
+    height: 30vh;
+    width: 25vw;
+  }
+  .cards-grid {
+    width: 40vw;
+    height: 70vh;
+  }
+  .leaderboard-container h2 {
+    padding: 0.7rem;
+  }
+}
+@media (max-width: 992px) {
+  .button {
+    padding: 0.3rem;
+  }
+  .welcome-screen {
+    width: 60vw;
+    height: 25vh;
+    display: flex;
+    justify-content: space-around;
+  }
+  .welcome-video .youtube-player {
+    width: 80vw;
+    height: 40vh;
+  }
+  .countdown {
+    width: 60vw;
+    height: 25vh;
+  }
+  .countdown-video .youtube-player {
+    width: 80vw;
+    height: 40vh;
+  }
+
+  .game-page {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .game-video .youtube-player {
+    width: 80vw;
+    height: 40vh;
+  }
+
+  .time-left {
+    height: 30vh;
+    font-size: 1.3rem;
+  }
+  .cards-grid {
+    width: 60vw;
+    height: 70vh;
+  }
+  .game-over {
+    width: 40vw;
+  }
+  .leaderboard-container h2 {
+    padding: 0.9rem;
+  }
+  .leaderboard-table {
+    font-size: 1.5rem;
+  }
+  .over-video .youtube-player {
+    width: 80vw;
+    height: 40vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    padding: 0.3rem;
+  }
+  .welcome-screen {
+    width: 80vw;
+    min-height: 26vh;
+    display: flex;
+    justify-content: space-around;
+  }
+  .welcome-screen form {
+    height: 20vh;
+  }
+  .welcome-video .youtube-player {
+    width: 60vw;
+    height: 30vh;
+  }
+  .countdown {
+    width: 60vw;
+    height: 26vh;
+  }
+  .game-video {
+    width: 100vw;
+    align-items: center;
+  }
+  .countdown-video .youtube-player {
+    width: 60vw;
+    height: 30vh;
+  }
+
+  .game-page {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .game-video .youtube-player {
+    width: 60vw;
+    height: 30vh;
+  }
+
+  .time-left {
+    height: 30vh;
+  }
+  .cards-grid {
+    width: 60vw;
+    height: 70vh;
+  }
+  .game-over {
+    width: 40vw;
+  }
+  .leaderboard-container h2 {
+    padding: 0.9rem;
+  }
+  .leaderboard-table {
+    font-size: 1.5rem;
+  }
+
+  .over-video .youtube-player {
+    width: 60vw;
+    height: 30vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .button {
+    padding: 0.1rem;
+  }
+  .welcome-screen {
+    width: 90vw;
+    height: 40vh;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .welcome-video .youtube-player {
+    width: 60vw;
+    height: 30vh;
+  }
+  .countdown {
+    width: 60vw;
+    height: 25vh;
+  }
+  .countdown-video .youtube-player {
+    width: 60vw;
+    height: 30vh;
+  }
+
+  .game-page {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .game-video .youtube-player {
+    width: 60vw;
+    height: 20vh;
+  }
+
+  .time-video .time-left {
+    min-height: 15vh;
+  }
+  .cards-grid {
+    width: 60vw;
+    height: 70vh;
+  }
+  .game-over {
+    width: 90vw;
+  }
+  .leaderboard-container h2 {
+    padding: 0.9rem;
+  }
+  .leaderboard-table {
+    font-size: 1.5rem;
+  }
+
+  .over-video .youtube-player {
+    width: 60vw;
+    height: 30vh;
   }
 }

@@ -78,7 +78,7 @@ const WelcomeScreen = () => {
         </button>
 
         {showErrorMessage && (
-          <span className="error-message">please enter your username</span>
+          <span className="error-message">Please enter your username</span>
         )}
       </form>
     </div>
